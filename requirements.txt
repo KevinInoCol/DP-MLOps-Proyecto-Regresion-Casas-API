@@ -1,0 +1,17 @@
+#Estas 2 dependencias son para deploy
+fastapi
+uvicorn
+
+python-multipart
+
+#hydra-core>=1.3.2
+ipykernel
+numpy
+pandas
+matplotlib
+seaborn
+scipy
+
+#Feature Engineering
+scikit-learn
+feature_engine
