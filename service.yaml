@@ -11,7 +11,7 @@ spec:
     spec:
       # Descomenta y ajusta si creas una cuenta de servicio dedicada para la API
       # (si se omite, Cloud Run usa la cuenta de servicio de Compute Engine por defecto).
-      # serviceAccountName: dev-mlops-regresion-api@datapath-kevin-inofuente.iam.gserviceaccount.com
+      serviceAccountName: dev-mlops-regresion-api@datapath-kevin-inofuente.iam.gserviceaccount.com
       containerConcurrency: 8
       timeoutSeconds: 300
       containers:

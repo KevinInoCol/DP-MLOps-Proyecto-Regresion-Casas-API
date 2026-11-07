@@ -18,7 +18,7 @@ gcloud builds submit \
     --config=cloudbuild.yaml \
     --project=datapath-kevin-inofuente \
     --region=us-central1 \
-    --service-account=projects/datapath-kevin-inofuente/serviceAccounts/<EMAIL_DE_TU_SA> \
+    --service-account=projects/datapath-kevin-inofuente/serviceAccounts/dev-mlops-regresion-api@datapath-kevin-inofuente.iam.gserviceaccount.com \
     --default-buckets-behavior=regional-user-owned-bucket
 
 ## Paso 4: Colocamos en servicio la aplicación
@@ -27,7 +27,13 @@ gcloud run services replace service.yaml --region us-central1 --project <ID_DEL_
 gcloud run services replace service.yaml --region us-central1 --project datapath-kevin-inofuente
 
 
-## Paso 5: Se ejecuta una sola vez para modificar los permisos (IAM)
-gcloud run services set-iam-policy <NOMBRE_DEL_SERVICIO_EN_service.yaml> gcr-service-policy.yaml --region us-central1 --project <ID_DEL_PROYECTO>
+## Paso 5: Se ejecuta una sola vez para modificar los permisos (IAM) para fines didácticos, porque lo correcto es que quede privado como está con ese "Error: Forbidden"
+gcloud run services set-iam-policy <NOMBRE_DEL_SERVICIO_EN_service.yaml>  \
+  gcr-service-policy.yaml \
+  --region us-central1 \
+  --project <ID_DEL_PROYECTO>
 
-gcloud run services set-iam-policy servicio-api-proyecto-regresion-kevin-inofuente gcr-service-policy.yaml --region us-central1 --project datapath-kevin-inofuente
+gcloud run services set-iam-policy servicio-api-proyecto-regresion-kevin-inofuente \
+  gcr-service-policy.yaml \
+  --region us-central1 \
+  --project datapath-kevin-inofuente
