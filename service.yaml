@@ -4,10 +4,18 @@ metadata:
   name: servicio-api-proyecto-regresion-kevin-inofuente
 spec:
   template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "0"
+        autoscaling.knative.dev/maxScale: "3"
     spec:
-      containerConcurrency: 80
+      # Descomenta y ajusta si creas una cuenta de servicio dedicada para la API
+      # (si se omite, Cloud Run usa la cuenta de servicio de Compute Engine por defecto).
+      # serviceAccountName: dev-mlops-regresion-api@datapath-kevin-inofuente.iam.gserviceaccount.com
+      containerConcurrency: 8
+      timeoutSeconds: 300
       containers:
-        - image: us-central1-docker.pkg.dev/datapath-mlops-kevin-inofuente/repositorio-mlops-inofuente/imagen-yolo26-mlops-inofuente:latest
+        - image: us-central1-docker.pkg.dev/datapath-kevin-inofuente/repositorio-regresion-casas-api/imagen-regresion-casas-api:v1
           ports:
             - containerPort: 4010
           resources:

@@ -16,4 +16,4 @@ RUN apt-get update && apt-get install -y git vim net-tools build-essential googl
 WORKDIR /ws/code
 
 #Variable Entorno
-ENV PYTHONPATH=/ws/code/src
+ENV PYTHONPATH=/ws/code/application

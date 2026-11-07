@@ -88,15 +88,18 @@ def list_files():
     #Ejecutamos el comando 'ls' y capturamos la salida
     result = subprocess.check_output(['ls'], text=True)
     #Devolvemos el directorio actual y la lista de archivos
-    return {"directory": current_directory, "files": result.splitlines()} #requirements.txt, src
+    return {"directory": current_directory, "files": result.splitlines()} #requirements.txt, application
 
 
-#Acceso mediante: /rutasinofuente/list_files_ruta_actual_src
-@app.get("/list_files_ruta_actual_src")
-def list_src_files(): #/usr/src/app/src
-    result = subprocess.check_output(['ls', 'src'], text=True)
-    return {"directory": "src", "files": result.splitlines()}
+#Acceso mediante: /rutasinofuente/list_files_ruta_actual_application
+@app.get("/list_files_ruta_actual_application")
+def list_application_files(): #/usr/src/app/application
+    result = subprocess.check_output(['ls', 'application'], text=True)
+    return {"directory": "application", "files": result.splitlines()}
 
+app.get("/extraer_JWT")
+def jwt_function():
+    pass
 
 @app.post("/obtener-datos-de-usuario-y-predecir")
 def publicar_mensaje(file: UploadFile = File(...)):
@@ -115,7 +118,7 @@ def publicar_mensaje(file: UploadFile = File(...)):
 
         # Cargar el pipeline de producción desde la ruta correcta
         # NOTA: Asegúrate de que esta ruta es donde estás copiando el archivo en el Dockerfile
-        ruta_modelo = os.path.join(ruta_actual, "src/precio_casas_pipeline.joblib")  # Actualización de la ruta
+        ruta_modelo = os.path.join(ruta_actual, "application/precio_casas_pipeline.joblib")  # Actualización de la ruta
         pipeline_de_produccion = joblib.load(ruta_modelo)
 
         # Hacer la predicción (SUMAMENTE IMPORTANTE) ************
@@ -137,3 +140,19 @@ def publicar_mensaje(file: UploadFile = File(...)):
         raise HTTPException(status_code=500, detail="Error al cargar el modelo de predicción.")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error interno del servidor: {str(e)}")
+
+@app.post("/jopesh")
+def joseph_fucntion():
+    pass
+
+@app.post("/eduardo")
+def eduardo_fucntion():
+    pass
+
+@app.post("/yeifer")
+def yeifer_fucntion():
+    pass
+
+@app.get("/walter")
+def walter_fucntion():
+    pass

@@ -12,13 +12,13 @@ COPY ./requirements.txt ./
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-# copy src code
-COPY ./src ./src
+# copy application code
+COPY ./application ./application
 
 EXPOSE 4010
 
 # STREAMLIT - No Borrar es parte del Template
-#ENTRYPOINT ["streamlit", "run", "src/modelo_ml_streamlit.py", "--server.port=4000", "--server.address=0.0.0.0"]
+#ENTRYPOINT ["streamlit", "run", "application/modelo_ml_streamlit.py", "--server.port=4000", "--server.address=0.0.0.0"]
 
 # FASTAPI
-CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "4010", "--proxy-headers"]
+CMD ["uvicorn", "application.main:app", "--host", "0.0.0.0", "--port", "4010", "--proxy-headers"]
