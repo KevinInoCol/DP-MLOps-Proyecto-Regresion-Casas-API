@@ -13,5 +13,7 @@ seaborn
 scipy
 
 #Feature Engineering
-scikit-learn
+# Congelado a la versión con la que se guardó precio_casas_pipeline.joblib
+# (evita el InconsistentVersionWarning al hacer joblib.load)
+scikit-learn==1.8.0
 feature_engine
